@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
 const ShazamApi1_Key = import.meta.env.VITE_X_RAPID_API_KEY;
 
 export const ShazamApi1 = createApi({
