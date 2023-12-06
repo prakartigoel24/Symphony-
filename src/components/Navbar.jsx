@@ -1,42 +1,56 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { TiThMenu } from "react-icons/ti";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, HiOutlineUserGroup } from 'react-icons/hi';
+import { RiCloseLine } from 'react-icons/ri';
 
-const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(true);
+const links = [
+  { name: 'Explore', to: '/', icon: HiOutlineHome },
+  { name: 'Around You', to: '/around-you', icon: HiOutlinePhotograph },
+  { name: 'Top Artists', to: '/top-artists', icon: HiOutlineUserGroup },
+  { name: 'Top Charts', to: '/top-charts', icon: HiOutlineHashtag },
+];
+
+const NavLinks = ({ handleClick }) => (
+  <div className="mt-10">
+    {links.map((item) => (
+      <NavLink
+        key={item.name}
+        to={item.to}
+        className="flex flex-row justify-start items-center my-8 text-sm font-medium text-gray-200 hover:text-cyan-400"
+        onClick={() => handleClick && handleClick()}
+      >
+        <item.icon className="w-6 h-6 mr-2" />
+        {item.name}
+      </NavLink>
+    ))}
+  </div>
+);
+
+const Sidebar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div
-      className="bg-transparent p-6 text-sky-200 sticky w-10 rounded-xl z-50 flex h-16 justify-center items-center"
-    >
-      <div
-        className={`flex flex-col gap-3 absolute top-16 px-3 py-3 bg-transparent w-full font-semibold ${
-          !navbarOpen ? "flex" : "hidden"
-        } `}
-      >
-        {/* <Link to="/" className="hover:text-gray-400">
-          Home
-        </Link>
-        <Link to="/" className="hover:text-gray-400">
-          Coins
-        </Link>
-        <Link to="/" className="hover:text-gray-400">
-          Exchanges
-        </Link>
-        <Link to="/" className="hover:text-gray-400">
-          Developer
-        </Link> */}
+    <>
+      <div className="md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#191624]">
+        <img src="/logo1.jpg" alt="logo" className="w-full h-14 object-contain" />
+        <NavLinks />
       </div>
 
-      <button onClick={() => setNavbarOpen(!navbarOpen)} className="">
-        {!navbarOpen ? (
-          <AiOutlineClose size={24} color={"white"} />
+      {/* Mobile sidebar */}
+      <div className="absolute md:hidden block top-6 right-3">
+        {!mobileMenuOpen ? (
+          <HiOutlineMenu className="w-6 h-6 mr-2 text-white" onClick={() => setMobileMenuOpen(true)} />
         ) : (
-          <TiThMenu size={24} />
+          <RiCloseLine className="w-6 h-6 mr-2 text-white" onClick={() => setMobileMenuOpen(false)} />
         )}
-      </button>
-    </div>
+      </div>
+
+      <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-black/10 to-[#040d20] backdrop-blur-xl z-10 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : '-left-full'}`}>
+        <img src="/logo1.jpg" alt="logo" className="w-full h-14 object-contain" />
+        <NavLinks handleClick={() => setMobileMenuOpen(false)} />
+      </div>
+    </>
   );
 };
-export default Navbar;
+
+export default Sidebar;

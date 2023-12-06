@@ -10,7 +10,6 @@ import AroundYou from './components/AroundYou';
 const App = () => {
   return (
     <div className="main">
-        <Router>
         <div className="header flex flex-row justify-between items-center">
         <SearchBar />
         <Navbar />
@@ -23,7 +22,6 @@ const App = () => {
             {/* <Route path="/artists/details/:artistId" element={} />
             <Route path="/song/details/:songId" element={} /> */}
           </Routes>
-        </Router>
     </div>
   );
 };
