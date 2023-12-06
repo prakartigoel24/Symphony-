@@ -10,7 +10,7 @@ import AroundYou from './components/AroundYou';
 const App = () => {
   return (
     <div className="main">
-        <div className="header flex flex-row justify-between items-center">
+        <div className="flex flex-col ">
         <SearchBar />
         <Navbar />
       </div>
