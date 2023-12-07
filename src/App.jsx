@@ -19,8 +19,6 @@ const App = () => {
             <Route path="/around-you" element={<AroundYou />} />
             <Route path="/top-artists" element={<TopArtists />} />
             <Route path="/top-songs" element={<TopSongs />} />
-            {/* <Route path="/artists/details/:artistId" element={} />
-            <Route path="/song/details/:songId" element={} /> */}
           </Routes>
     </div>
   );

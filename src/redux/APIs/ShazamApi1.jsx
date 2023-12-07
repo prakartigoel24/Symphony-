@@ -30,4 +30,7 @@ export const {
   useGetTopSongsQuery,
   useGetTopSongsByGenreQuery,
   useGetTopSongsByCountryQuery,
+  useGetArtistDetailsQuery,
+  useGetRelatedSongsQuery,
+  useGetSongDetailsQuery,
 } = ShazamApi1;

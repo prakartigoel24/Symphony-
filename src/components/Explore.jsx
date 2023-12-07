@@ -12,10 +12,11 @@ import "swiper/css/free-mode";
 import SongCard from "./SongCard";
 import { GenreToListId } from "../assets/genreToListId";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const TopSongCard = ({ song, i }) => {
   return (
-    <div className="flex flex-row w-full items-center rounded-lg cursor-pointer mb-2 py-2 p-4">
+    <div className="flex flex-row w-full items-center rounded-lg mb-2 py-2 p-4">
       <h1 className="font-bold text-base text-white mr-3">{i + 1}.</h1>
       <div className="flex-1 flex flex-row">
         <img
@@ -34,14 +35,13 @@ const TopSongCard = ({ song, i }) => {
 
 const Explore = () => {
   const [genreId, setGenreId] = useState("genre-global-chart-1");
-  
+
   const { data: topSongs, isFetching, isError } = useGetTopSongsQuery();
   const {
     data: topSongsByGenre,
     isFetching: isFetchingSongsByGenre,
     isError: isErrorForSongsByGenre,
   } = useGetTopSongsByGenreQuery(genreId);
-
 
   console.log(topSongsByGenre?.tracks);
   const topFiveSongs = topSongs?.tracks?.slice(0, 5);
@@ -101,9 +101,8 @@ const Explore = () => {
               setGenreId(e.target.value);
             }}
             value={genreId}
-            className="bg-black rounded-lg text-gray-300 p-3 text-sm outline-none mt-5"
+            className="bg-black rounded-lg text-gray-300 p-3 text-sm outline-none mt-5 mb-5"
           >
-
             {GenreToListId.map((obj, i) => (
               <option key={obj.listid} value={obj.listid}>
                 {obj.genre}
@@ -111,10 +110,16 @@ const Explore = () => {
             ))}
           </select>
         </div>
-        <div className="flex flex-col justify-center items-center">
-          {isErrorForSongsByGenre? <ErrorComponent/> : isFetchingSongsByGenre? <Loader/> :topSongsByGenre?.tracks?.map((song, i) => {
-            return <SongCard song={song} key={song?.key} i={i} />;
-          })}
+        <div className="flex flex-col justify-center items-center m-4">
+          {isErrorForSongsByGenre ? (
+            <ErrorComponent />
+          ) : isFetchingSongsByGenre ? (
+            <Loader />
+          ) : (
+            topSongsByGenre?.tracks?.map((song, i) => {
+              return <SongCard song={song} key={song?.key} i={i} />;
+            })
+          )}
         </div>
       </div>
     </div>
