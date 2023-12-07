@@ -7,7 +7,7 @@ const links = [
   { name: 'Explore', to: '/', icon: HiOutlineHome },
   { name: 'Around You', to: '/around-you', icon: HiOutlinePhotograph },
   { name: 'Top Artists', to: '/top-artists', icon: HiOutlineUserGroup },
-  { name: 'Top Charts', to: '/top-charts', icon: HiOutlineHashtag },
+  { name: 'Top Songs', to: '/top-songs', icon: HiOutlineHashtag },
 ];
 
 const NavLinks = ({ handleClick }) => (
@@ -45,7 +45,7 @@ const Sidebar = () => {
         )}
       </div>
 
-      <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-black/10 to-[#040d20] backdrop-blur-xl z-10 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : '-left-full'}`}>
+      <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-black/10 to-[#040d20] backdrop-blur-xl z-20 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 'left-0' : '-left-full'}`}>
         <img src="/logo1.jpg" alt="logo" className="w-full h-14 object-contain" />
         <NavLinks handleClick={() => setMobileMenuOpen(false)} />
       </div>

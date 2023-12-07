@@ -10,7 +10,7 @@ import AroundYou from './components/AroundYou';
 const App = () => {
   return (
     <div className="main">
-        <div className="header flex flex-row justify-between items-center">
+        <div className="flex flex-col ">
         <SearchBar />
         <Navbar />
       </div>
@@ -19,8 +19,6 @@ const App = () => {
             <Route path="/around-you" element={<AroundYou />} />
             <Route path="/top-artists" element={<TopArtists />} />
             <Route path="/top-songs" element={<TopSongs />} />
-            {/* <Route path="/artists/details/:artistId" element={} />
-            <Route path="/song/details/:songId" element={} /> */}
           </Routes>
     </div>
   );
