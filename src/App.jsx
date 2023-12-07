@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TopSongs from './components/TopSongs';
 import TopArtists from './components/TopArtists';
 import AroundYou from './components/AroundYou';
+import SearchPage from "./components/SearchPage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/around-you" element={<AroundYou />} />
             <Route path="/top-artists" element={<TopArtists />} />
             <Route path="/top-songs" element={<TopSongs />} />
+            <Route path="/search" element={<SearchPage />} />
           </Routes>
     </div>
   );
