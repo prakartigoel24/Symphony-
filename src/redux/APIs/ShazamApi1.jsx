@@ -23,6 +23,11 @@ export const ShazamApi1 = createApi({
         url: `/charts/track?listId=ip-country-chart-${countryCode}`,
       }),
     }),
+    getSongsBySearch: build.query({
+      query: (search_term) => ({
+        url: `/search?term=${search_term}`,
+      }),
+    }),
   }),
 });
 
@@ -30,4 +35,5 @@ export const {
   useGetTopSongsQuery,
   useGetTopSongsByGenreQuery,
   useGetTopSongsByCountryQuery,
+  useGetSongsBySearchQuery
 } = ShazamApi1;

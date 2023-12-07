@@ -42,8 +42,6 @@ const Explore = () => {
     isFetching: isFetchingSongsByGenre,
     isError: isErrorForSongsByGenre,
   } = useGetTopSongsByGenreQuery(genreId);
-
-  console.log(topSongsByGenre?.tracks);
   const topFiveSongs = topSongs?.tracks?.slice(0, 5);
 
   if (isFetching) return <Loader />;
