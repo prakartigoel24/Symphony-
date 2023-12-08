@@ -44,8 +44,8 @@ const Explore = () => {
   } = useGetTopSongsByGenreQuery(genreId);
   const topFiveSongs = topSongs?.tracks?.slice(0, 5);
 
-  if (isFetching || isFetchingSongsByGenre) return <Loader />;
-  if (isError || isErrorForSongsByGenre) return <ErrorComponent />;
+  if (isFetching) return <Loader />;
+  if (isError) return <ErrorComponent />;
 
   return (
     <div className="flex flex-col m-4 w-fit">
@@ -111,7 +111,7 @@ const Explore = () => {
           </select>
         </div>
         <div className="flex flex-wrap justify-center items-center m-4">
-          {
+          {isErrorForSongsByGenre?<ErrorComponent/>:isFetching?<Loader/>:
             topSongsByGenre?.tracks?.map((song, i) => {
               return <SongCard song={song} key={song?.key} i={i} />;
             }
