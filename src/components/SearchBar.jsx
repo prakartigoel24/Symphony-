@@ -13,11 +13,11 @@ const SearchBar = () => {
   return (
     <>
       <Link to={`search/`}>
-      <div className="flex justify-start items-center  rounded-2xl m-3 w-full"
+      <div className="flex justify-start items-center rounded-2xl m-3 w-full"
       >
         <BsSearch className="relative left-4 w-4 h-4 bg-transparent" />
         <input
-          className="px-4 m-4 w-full relative flex justify-start items-center outline-none bg-transparent"
+          className="px-4 m-3 w-full relative flex justify-start items-center outline-none bg-transparent"
           value={searchTerm}
           type="text"
           placeholder="Search for songs..."

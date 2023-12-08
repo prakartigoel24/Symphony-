@@ -23,10 +23,9 @@ const Explore = () => {
 
   return (
     <div className="flex flex-col w-fit">
-      
       <div className="m-4 flex flex-col w-fit">
-        <div className="sm:flex sm:justify-between sm:items-center">
-          <h1 className="text-2xl font-bold mx-4">Discover</h1>
+        <div className="flex flex-col justify-center items-center lg:justify-between lg:items-center lg:flex-row mx-4">
+          <h1 className="text-3xl font-bold">Discover</h1>
           <select
             onChange={(e) => {
               setGenreId(e.target.value);
@@ -41,7 +40,7 @@ const Explore = () => {
             ))}
           </select>
         </div>
-        <div className="flex flex-wrap justify-center items-center m-4">
+        <div className="flex flex-wrap justify-center gap-8">
           {
             topSongsByGenre?.tracks?.map((song, i) => {
               return <SongCard song={song} key={song?.key} i={i} />;

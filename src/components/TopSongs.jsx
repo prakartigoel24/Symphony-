@@ -14,7 +14,7 @@ const TopSongs = () => {
   return (
     <div className="flex flex-col w-fit ">
       <div className="flex flex-col m-4">
-        <h2 className="font-bold text-3xl mx-4 text-white text-left mt-4 mb-10">
+        <h2 className="font-bold text-center text-3xl mx-4 text-white lg:text-left mt-4 mb-10">
           Top Songs
         </h2>
         <div className="flex flex-wrap justify-center gap-8">

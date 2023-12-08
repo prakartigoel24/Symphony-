@@ -10,16 +10,16 @@ import ErrorComponent from "./ErrorComponent";
 
 const TopSongCard = ({ song, i }) => {
   return (
-    <div className="flex flex-row w-full items-center rounded-lg mb-2 py-2 p-4 cursor-pointer">
+    <div className="flex flex-row w-full items-center rounded-lg mb-2 py-2 cursor-pointer">
       <h1 className="font-bold text-base text-white mr-3">{i + 1}.</h1>
-      <div className="flex flex-row">
+      <div className="flex">
         <img
-          className="w-28 h-28 rounded-lg"
+          className="w-24 h-24 rounded-lg"
           src={song.images?.coverart}
           alt={song?.title}
         />
         <div className="flex flex-col justify-center mx-3">
-          <p className="text-xl font-bold text-white">{song?.title}</p>
+          <p className="text-md md:text-lg font-bold text-white">{song?.title}</p>
           <p className="text-base mt-1 text-gray-300">{song?.subtitle}</p>
         </div>
       </div>
@@ -35,8 +35,8 @@ const TopPlay = () => {
   if (isError) return <ErrorComponent />;
 
   return (
-    <div className="flex flex-col m-4 w-fit">
-      <div className="flex flex-col m-4 w-fit">
+    <div className="flex flex-col m-4 lg:-mt-2 lg:-ml-8 w-fit">
+      <div className="flex flex-col mx-4 w-fit">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Top Songs</h1>
           <Link to="/top-songs">see more</Link>
@@ -67,7 +67,7 @@ const TopPlay = () => {
             {topFiveSongs?.map((song) => (
               <SwiperSlide
                 key={song?.key}
-                style={{ width: "25%", height: "auto" }}
+                style={{ width: "25%", height: "25%" }}
                 className="shadow-lg rounded-full animate-slideright"
               >
                 <img

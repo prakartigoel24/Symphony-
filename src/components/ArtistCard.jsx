@@ -6,10 +6,10 @@ const ArtistCard = ({ track }) => {
 
   return (
     <div
-      className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer"
+      className="flex flex-col w-[220px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer"
     >
-      <img alt="song_img" src={track?.images?.coverart} className="w-full h-56 rounded-lg" />
-      <p className="mt-4 font-semibold text-lg text-white truncate">
+      <img alt="song_img" src={track?.images?.coverart} className="w-full h-48 rounded-lg" />
+      <p className="mt-2 font-semibold text-lg text-white truncate">
         {track?.subtitle}
       </p>
     </div>

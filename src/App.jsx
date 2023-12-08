@@ -15,11 +15,11 @@ const App = () => {
       <Navbar />
       <div className="flex-1 flex flex-col">
         <SearchBar />
-        <div className="h-[calc(100vh-72px)] flex flex-col">
-          <div className="relative top-0 h-fit">
+        <div className="h-[calc(100vh-72px)] flex flex-col lg:grid lg:grid-cols-3 overflow-y-auto no-scrollbar">
+          <div className="top-0 h-fit relative lg:sticky">
             <TopPlay />
           </div>
-          <div className="flex-1 h-fit pb-40">
+          <div className="h-fit pb-40 lg:col-span-2 lg:order-first lg:overflow-y-auto no-scrollbar -mt-8 -ml-3">
             <Routes>
               <Route path="/" element={<Explore />} />
               <Route path="/around-you" element={<AroundYou />} />
