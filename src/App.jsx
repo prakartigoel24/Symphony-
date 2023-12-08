@@ -11,22 +11,24 @@ import TopPlay from "./components/TopPlay";
 
 const App = () => {
   return (
-    <div className="main">
-      <div className="flex flex-col ">
+    <div className="relative flex">
+      <Navbar />
+      <div className="flex-1 flex flex-col">
         <SearchBar />
-        <Navbar />
-      </div>
-      <div className="relative top-0 h-fit">
-        <TopPlay />
-      </div>
-      <div className="flex-1 h-fit pb-40">
-        <Routes>
-          <Route path="/" element={<Explore />} />
-          <Route path="/around-you" element={<AroundYou />} />
-          <Route path="/top-artists" element={<TopArtists />} />
-          <Route path="/top-songs" element={<TopSongs />} />
-          <Route path="/search" element={<SearchPage />} />
-        </Routes>
+        <div className="h-[calc(100vh-72px)] flex flex-col">
+          <div className="relative top-0 h-fit">
+            <TopPlay />
+          </div>
+          <div className="flex-1 h-fit pb-40">
+            <Routes>
+              <Route path="/" element={<Explore />} />
+              <Route path="/around-you" element={<AroundYou />} />
+              <Route path="/top-artists" element={<TopArtists />} />
+              <Route path="/top-songs" element={<TopSongs />} />
+              <Route path="/search" element={<SearchPage />} />
+            </Routes>
+          </div>
+        </div>
       </div>
     </div>
   );
