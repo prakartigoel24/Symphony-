@@ -44,12 +44,16 @@ const Explore = () => {
   } = useGetTopSongsByGenreQuery(genreId);
   const topFiveSongs = topSongs?.tracks?.slice(0, 5);
 
-  if (isFetching) return <Loader />;
-  if (isError) return <ErrorComponent />;
+  if (isFetching || isFetchingSongsByGenre) return <Loader />;
+  if (isError || isErrorForSongsByGenre) return <ErrorComponent />;
+
   return (
-    <div className="flex flex-col m-4 max-w-full flex-1">
-      <div className="w-full flex flex-col">
+    <div className="flex flex-col m-4 w-fit">
+      <div className="flex flex-col m-4 w-fit">
+        <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Top Songs</h1>
+        <Link to="/top-songs">see more</Link>
+        </div>
         <div className="mt-4 flex flex-col gap-1">
           {topFiveSongs?.map((song, i) => {
             return <TopSongCard song={song} i={i} key={song?.key} />;
@@ -58,8 +62,11 @@ const Explore = () => {
       </div>
 
       {/* Top Artists slider section */}
-      <div className="flex flex-col m-4 w-full">
+      <div className="flex flex-col m-4 w-fit">
+      <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Top Artists</h1>
+        <Link to="/top-artists">see more</Link>
+        </div>
         <div>
           <Swiper
             slidesPerView="auto"
@@ -70,29 +77,24 @@ const Explore = () => {
             modules={[FreeMode]}
             className="mt-4"
           >
-            {topFiveSongs?.map((song, i) => {
-              return (
-                <SwiperSlide
-                  key={song?.key}
-                  style={{ width: "120px", height: "auto" }}
-                  className="shadow-lg rounded-full animate-slideright"
-                >
-                  <h2 className="justify-center items-center relative top-16 font-semibold text-sky-200 flex">
-                    {song?.subtitle}
-                  </h2>
-                  <img
-                    src={song?.images.background}
-                    alt="name"
-                    className="rounded-full w-full object-cover hover:opacity-20"
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {topFiveSongs?.map((song) => (
+              <SwiperSlide
+                key={song?.key}
+                style={{ width: "25%", height: "auto" }}
+                className="shadow-lg rounded-full animate-slideright"
+              >
+                <img
+                  src={song?.images?.background}
+                  alt="Name"
+                  className="rounded-full w-full object-cover"
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
-      <div className="m-4">
-        <div>
+      <div className="m-4 flex flex-col w-fit">
+        <div className="">
           <h1 className="text-2xl font-bold">Discover</h1>
           <select
             onChange={(e) => {
@@ -108,15 +110,11 @@ const Explore = () => {
             ))}
           </select>
         </div>
-        <div className="flex flex-col justify-center items-center m-4">
-          {isErrorForSongsByGenre ? (
-            <ErrorComponent />
-          ) : isFetchingSongsByGenre ? (
-            <Loader />
-          ) : (
+        <div className="flex flex-wrap justify-center items-center m-4">
+          {
             topSongsByGenre?.tracks?.map((song, i) => {
               return <SongCard song={song} key={song?.key} i={i} />;
-            })
+            }
           )}
         </div>
       </div>
