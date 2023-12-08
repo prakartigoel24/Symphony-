@@ -15,8 +15,8 @@ const SearchPage = () => {
   if (isError) return <ErrorComponent />;
 
   return (
-    <div className="flex flex-col m-4">
-      <h2 className="font-bold text-3xl text-white text-left mt-4 mb-10">
+    <div className="flex flex-col m-4 w-fit">
+      <h2 className="font-bold text-3xl mx-4 text-white text-left mt-4 mb-10">
         Showing results for <span className="font-black">{searchTerm}</span>
       </h2>
 
