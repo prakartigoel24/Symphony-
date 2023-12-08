@@ -11,15 +11,15 @@ import TopPlay from "./components/TopPlay";
 
 const App = () => {
   return (
-    <div className="relative flex">
+    <div className="relative flex h-screen">
       <Navbar />
       <div className="flex-1 flex flex-col">
         <SearchBar />
-        <div className="h-[calc(100vh-72px)] flex flex-col lg:grid lg:grid-cols-3 overflow-y-auto no-scrollbar">
-          <div className="top-0 h-fit relative lg:sticky">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 overflow-y-auto no-scrollbar">
+          <div className="top-0 h-fit lg:h-full lg:overflow-auto relative">
             <TopPlay />
           </div>
-          <div className="h-fit pb-40 lg:col-span-2 lg:order-first lg:overflow-y-auto no-scrollbar -mt-8 -ml-3">
+          <div className="h-full pb-40 lg:col-span-2 lg:order-first lg:overflow-y-auto no-scrollbar -mt-8 -ml-3">
             <Routes>
               <Route path="/" element={<Explore />} />
               <Route path="/around-you" element={<AroundYou />} />
