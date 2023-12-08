@@ -16,9 +16,9 @@ import { Link } from "react-router-dom";
 
 const TopSongCard = ({ song, i }) => {
   return (
-    <div className="flex flex-row w-full items-center rounded-lg mb-2 py-2 p-4">
+    <div className="flex flex-row w-full items-center rounded-lg mb-2 py-2 p-4 cursor-pointer">
       <h1 className="font-bold text-base text-white mr-3">{i + 1}.</h1>
-      <div className="flex-1 flex flex-row">
+      <div className="flex flex-row">
         <img
           className="w-28 h-28 rounded-lg"
           src={song.images?.coverart}
@@ -51,10 +51,10 @@ const Explore = () => {
     <div className="flex flex-col m-4 w-fit">
       <div className="flex flex-col m-4 w-fit">
         <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Top Songs</h1>
-        <Link to="/top-songs">see more</Link>
+          <h1 className="text-2xl font-bold">Top Songs</h1>
+          <Link to="/top-songs">see more</Link>
         </div>
-        <div className="mt-4 flex flex-col gap-1">
+        <div className="mt-4 flex flex-col">
           {topFiveSongs?.map((song, i) => {
             return <TopSongCard song={song} i={i} key={song?.key} />;
           })}
@@ -63,9 +63,9 @@ const Explore = () => {
 
       {/* Top Artists slider section */}
       <div className="flex flex-col m-4 w-fit">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Top Artists</h1>
-        <Link to="/top-artists">see more</Link>
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Top Artists</h1>
+          <Link to="/top-artists">see more</Link>
         </div>
         <div>
           <Swiper
@@ -94,7 +94,7 @@ const Explore = () => {
         </div>
       </div>
       <div className="m-4 flex flex-col w-fit">
-        <div className="">
+        <div className="sm:flex sm:justify-between sm:items-center">
           <h1 className="text-2xl font-bold">Discover</h1>
           <select
             onChange={(e) => {
@@ -111,10 +111,14 @@ const Explore = () => {
           </select>
         </div>
         <div className="flex flex-wrap justify-center items-center m-4">
-          {isErrorForSongsByGenre?<ErrorComponent/>:isFetching?<Loader/>:
+          {isErrorForSongsByGenre ? (
+            <ErrorComponent />
+          ) : isFetchingSongsByGenre ? (
+            <Loader />
+          ) : (
             topSongsByGenre?.tracks?.map((song, i) => {
               return <SongCard song={song} key={song?.key} i={i} />;
-            }
+            })
           )}
         </div>
       </div>
