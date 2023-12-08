@@ -22,11 +22,11 @@ const Explore = () => {
   if(isFetchingSongsByGenre) return <Loader/>
 
   return (
-    <div className="flex flex-col m-4 w-fit">
+    <div className="flex flex-col w-fit">
       
       <div className="m-4 flex flex-col w-fit">
         <div className="sm:flex sm:justify-between sm:items-center">
-          <h1 className="text-2xl font-bold">Discover</h1>
+          <h1 className="text-2xl font-bold mx-4">Discover</h1>
           <select
             onChange={(e) => {
               setGenreId(e.target.value);
