@@ -35,8 +35,8 @@ const TopPlay = () => {
   if (isError) return <ErrorComponent />;
 
   return (
-    <div className="flex flex-col m-4 lg:-mt-2 lg:-ml-8 w-fit">
-      <div className="flex flex-col mx-4 w-fit">
+    <div className="flex flex-col m-4 lg:-mt-2 lg:-ml-8 w-fit px-5">
+      <div className="flex flex-col m-4 w-fit">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Top Songs</h1>
           <Link to="/top-songs">see more</Link>
