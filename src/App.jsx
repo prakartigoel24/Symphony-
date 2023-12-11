@@ -8,6 +8,7 @@ import TopArtists from "./components/TopArtists";
 import AroundYou from "./components/AroundYou";
 import SearchPage from "./components/SearchPage";
 import TopPlay from "./components/TopPlay";
+import MusicPlayer from "./components/MusicPlayer";
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
               <Route path="/search" element={<SearchPage />} />
             </Routes>
           </div>
+        </div>
+        <div className="w-full h-fit bg-white fixed bottom-0 left-0 right-0">
+          <MusicPlayer/>
         </div>
       </div>
     </div>
