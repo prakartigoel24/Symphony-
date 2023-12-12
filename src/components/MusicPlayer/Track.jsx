@@ -7,8 +7,8 @@ const Track = () => {
         <img src="/logo1.jpg" alt="Song img" className=' rounded-full'/>
       </div>
       <div>
-        <p>Song Name</p>
-        <p>Artist name </p>
+        <p className='font-semibold truncate'>Song Name</p>
+        <p className='text-gray-300 truncate'>Artist name</p>
       </div>
     </div>
   )
