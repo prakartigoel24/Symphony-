@@ -9,9 +9,9 @@ import { useState, useEffect } from 'react';
 
 const MusicPlayer = () => {
   return (
-    <div className='bg-white fixed bottom-0 w-full grid md:grid-cols-8 sm:grid-cols-6'>
+    <div className='bg-white fixed bottom-0 w-full grid md:grid-cols-8 grid-cols-6'>
         <Track/>
-        <div className='w-full sm:col-span-4 md:col-start-3'>
+        <div className='w-full md:col-start-3 col-span-4'>
         <Controls/>
         <Seekbar/>
         <Player/>
