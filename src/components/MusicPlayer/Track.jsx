@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Track = () => {
+const Track = ({isPlaying,isActive,activeSong}) => {
   return (
     <div className='bg-red-600 grid col-span-2 w-full grid-flow-col items-center justify-center'>
       <div className='hidden sm:block h-16 w-16 mr-4'>

@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { playPause, setActiveSong } from "../redux/Slices/PlayerSlice";
+import PlayPause from "./PlayPause";
 
-const SongCard = ({ song, i }) => {
+
+const SongCard = ({ song,isPlaying, activeSong,data,i }) => {
+  const dispatch = useDispatch();
+
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
+
   return (
-    <div className="flex flex-col w-[220px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+    <div className="flex flex-col w-[220px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer"
+    >
       <div className="relative w-full h-48 group">
-        {/* <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.title === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'}`}>
+        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.title === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'}`}>
           <PlayPause
             isPlaying={isPlaying}
             activeSong={activeSong}
@@ -12,7 +28,7 @@ const SongCard = ({ song, i }) => {
             handlePause={handlePauseClick}
             handlePlay={handlePlayClick}
           />
-        </div> */}
+        </div>
         <img
           alt="song_img"
           src={song?.images?.coverart}

@@ -4,7 +4,7 @@ import { IoMdSkipForward, IoMdSkipBackward } from "react-icons/io";
 import { FaShuffle, FaRepeat } from "react-icons/fa6";
 
 
-const Controls = () => {
+const Controls = ({isPlaying,isActive,currentSongs}) => {
   return (
     <div className='bg-yellow-600 grid grid-flow-col w-full h-12 items-center justify-around'>
       <FaRepeat  size={18} className='cursor-pointer'/>
