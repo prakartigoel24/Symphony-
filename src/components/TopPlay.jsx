@@ -21,27 +21,32 @@ const TopSongCard = ({
   handlePlayClick,
 }) => {
   return (
-    <div className="flex flex-row w-full items-center rounded-lg mb-2 py-2 cursor-pointer">
+    <div className={`flex flex-row w-full items-center rounded-lg mb-2 py-2 px-4 cursor-pointer 
+    ${activeSong?.title === song.title && 'bg-slate-400/20 bg-opacity-70'}`}>
       <h1 className="font-bold text-base text-white mr-3">{i + 1}.</h1>
-      <div className="flex">
-        <img
-          className="w-24 h-24 rounded-lg"
-          src={song.images?.coverart}
-          alt={song?.title}
-        />
-        <div className="flex flex-col justify-center mx-3">
-          <p className="text-md md:text-lg font-bold text-white">
-            {song?.title}
-          </p>
-          <p className="text-base mt-1 text-gray-300">{song?.subtitle}</p>
+      <div className="flex justify-between items-center w-full">
+        <div className="flex">
+          <img
+            className="w-24 h-24 rounded-lg"
+            src={song.images?.coverart}
+            alt={song?.title}
+          />
+          <div className="flex flex-col justify-center mx-3">
+            <p className="text-md md:text-lg font-bold text-white">
+              {song?.title}
+            </p>
+            <p className="text-base mt-1 text-gray-300">{song?.subtitle}</p>
+          </div>
         </div>
-        <PlayPause
-          isPlaying={isPlaying}
-          activeSong={activeSong}
-          song={song}
-          handlePause={handlePauseClick}
-          handlePlay={handlePlayClick}
-        />
+        <div className="scale-125">
+          <PlayPause
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            song={song}
+            handlePause={handlePauseClick}
+            handlePlay={handlePlayClick}
+          />
+        </div>
       </div>
     </div>
   );
@@ -68,13 +73,13 @@ const TopPlay = () => {
   if (isError) return <ErrorComponent />;
 
   return (
-    <div className="flex flex-col m-4 lg:-mt-2 lg:-ml-8 w-fit px-5">
-      <div className="flex flex-col m-4 w-fit">
+    <div className="flex flex-col m-4 lg:-mt-2 lg:-ml-8 w-full px-5">
+      <div className="flex flex-col m-4 w-full">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Top Songs</h1>
           <Link to="/top-songs">see more</Link>
         </div>
-        <div className="mt-4 flex flex-col">
+        <div className="mt-4 flex flex-col w-full">
           {topFiveSongs?.map((song, i) => {
             return (
               <TopSongCard
