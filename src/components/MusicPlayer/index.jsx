@@ -57,7 +57,7 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="bg-white fixed bottom-0 w-full grid md:grid-cols-8 grid-cols-6">
+    <div className="fixed bottom-3 w-full grid md:grid-cols-8 grid-cols-6">
       <Track
         isPlaying={isPlaying}
         isActive={isActive}

@@ -9,8 +9,11 @@ import AroundYou from "./components/AroundYou";
 import SearchPage from "./components/SearchPage";
 import TopPlay from "./components/TopPlay";
 import MusicPlayer from "./components/MusicPlayer";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const { activeSong } = useSelector((state) => state.player);
+
   return (
     <div className="relative flex h-screen">
       <Navbar />
@@ -30,9 +33,12 @@ const App = () => {
             </Routes>
           </div>
         </div>
-        <div className="w-full h-fit bg-white fixed bottom-0 left-0 right-0">
-          <MusicPlayer/>
-        </div>
+
+        {activeSong?.title && (
+          <div className="fixed sm:h-28 h-20 bottom-0 left-0 right-0 animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
+            <MusicPlayer />
+          </div>
+        )}
       </div>
     </div>
   );

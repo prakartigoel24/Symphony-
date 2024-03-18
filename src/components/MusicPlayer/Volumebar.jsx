@@ -7,7 +7,7 @@ import {
 
 const Volumebar = ({ value, min, max, onChange, setVolume }) => {
   return (
-    <div className="bg-amber-900 w-full hidden md:grid md:col-span-2 md:justify-center md:items-center md:grid-flow-col">
+    <div className=" w-full hidden md:grid md:col-span-2 md:justify-center md:items-center md:grid-flow-col">
       {value <= 1 && value > 0.5 && (
         <BsFillVolumeUpFill
           size={25}

@@ -5,7 +5,7 @@ const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
   const getTime = (time) => `${Math.floor(time / 60)}:${(`0${Math.floor(time % 60)}`).slice(-2)}`;
 
   return (
-    <div className='bg-blue-500 hidden sm:grid w-full h-8 items-center justify-center sm:grid-flow-col'>
+    <div className='hidden sm:grid w-full h-8 items-center justify-center sm:grid-flow-col'>
         <p>{value === 0 ? '0:00' : getTime(value)}</p>
         <input
         type="range"

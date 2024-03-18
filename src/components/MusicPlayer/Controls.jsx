@@ -6,7 +6,7 @@ import { FaShuffle, FaRepeat } from "react-icons/fa6";
 
 const Controls = ({isPlaying, repeat, setRepeat, shuffle, setShuffle, currentSongs, handlePlayPause, handlePrevSong, handleNextSong}) => {
   return (
-    <div className='bg-yellow-600 grid grid-flow-col w-full h-12 items-center justify-around'>
+    <div className='grid grid-flow-col w-full h-12 items-center justify-around'>
 
       <FaRepeat  size={18} className='cursor-pointer' color={repeat ? 'red' : 'white'} onClick={() => setRepeat((prev) => !prev)}/>
 
