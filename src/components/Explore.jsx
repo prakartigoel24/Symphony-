@@ -7,7 +7,7 @@ import ErrorComponent from "./ErrorComponent";
 import SongCard from "./SongCard";
 import { GenreToListId } from "../assets/genreToListId";
 import { useState } from "react";
-
+import { useDispatch, useSelector } from 'react-redux';
 
 const Explore = () => {
   const [genreId, setGenreId] = useState("genre-global-chart-1");
@@ -18,9 +18,13 @@ const Explore = () => {
     isError: isErrorForSongsByGenre,
   } = useGetTopSongsByGenreQuery(genreId);
   
+  const dispatch = useDispatch();
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
   if(isErrorForSongsByGenre) return <ErrorComponent/>
   if(isFetchingSongsByGenre) return <Loader/>
 
+  // console.log(topSongsByGenre);
   return (
     <div className="flex flex-col w-fit">
       <div className="m-4 flex flex-col w-fit">
@@ -43,7 +47,9 @@ const Explore = () => {
         <div className="flex flex-wrap justify-center gap-8">
           {
             topSongsByGenre?.tracks?.map((song, i) => {
-              return <SongCard song={song} key={song?.key} i={i} />;
+              return <SongCard song={song} key={song?.key} i={i} data={topSongsByGenre} 
+              isPlaying={isPlaying}
+              activeSong={activeSong}/>;
             }
           )}
         </div>

@@ -4,10 +4,16 @@ import ErrorComponent from "./ErrorComponent";
 import Loader from "./Loader";
 import SongCard from "./SongCard";
 import { useGetTopSongsByCountryQuery } from "../redux/APIs/ShazamApi1";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const AroundYou = () => {
   const [country, setCountry] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
+
   const {
     data: songsInCountry,
     isFetching,
@@ -39,7 +45,9 @@ const AroundYou = () => {
 
         <div className="flex flex-wrap justify-center gap-8">
           {songsInCountry?.tracks?.map((song, i) => (
-            <SongCard key={song.key} song={song} i={i} />
+            <SongCard key={song.key} song={song} i={i} 
+            isPlaying={isPlaying}
+            activeSong={activeSong} />
           ))}
         </div>
       </div>
