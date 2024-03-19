@@ -102,7 +102,7 @@ const TopPlay = () => {
           <h1 className="text-2xl font-bold">Top Artists</h1>
           <Link to="/top-artists">see more</Link>
         </div>
-        <div>
+        <div className="lg:mb-20">
           <Swiper
             slidesPerView="auto"
             spaceBetween={15}

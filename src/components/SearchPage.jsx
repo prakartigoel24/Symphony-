@@ -10,6 +10,8 @@ const SearchPage = () => {
   const { data, isFetching, isError } = useGetSongsBySearchQuery(searchTerm);
   const songs = data?.tracks?.hits.map((song) => song.track);
 
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
   if (isFetching) return <Loader />;
 
   if (isError) return <ErrorComponent />;
@@ -22,7 +24,9 @@ const SearchPage = () => {
 
       <div className="flex flex-wrap justify-center gap-8">
         {songs?.map((song, i) => (
-          <SongCard key={song.key} song={song} i={i} />
+          <SongCard key={song.key} song={song} i={i}
+          isPlaying={isPlaying}
+          activeSong={activeSong} />
         ))}
       </div>
     </div>
